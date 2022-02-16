@@ -34,27 +34,29 @@ int main() {
     scanf("%s", sizeStr);
     int size = strtol(sizeStr, &endStr, 10);
     if (*endStr != '\0') {
-        printf("Invalid input!");
+        puts("Invalid input!");
         getchar();
         return 1;
     } else {
+        char **stuInputs = (char **) malloc(sizeof(char *) * size);
         char **stuNames = (char **) malloc(sizeof(char *) * size);
         char **stuIDs = (char **) malloc(sizeof(char *) * size);
         int *stuScores = (int *) malloc(sizeof(int) * size);
         if (stuNames == NULL || stuIDs == NULL || stuScores == NULL) {
-            printf("Memory allocation failure!");
+            puts("Memory allocation failure!");
             getchar();
             return 1;
         } else {
             for (int i = 0; i < size; ++i) {
-                stuNames[i] = malloc(sizeof(char) * 10);
-                stuIDs[i] = malloc(sizeof(char) * 10);
-                if (stuNames[i] == NULL || stuIDs[i] == NULL) {
-                    printf("Memory allocation failure!");
+                stuInputs[i] = (char *) malloc(sizeof(char) * 25);
+                stuNames[i] = (char *) malloc(sizeof(char) * 10);
+                stuIDs[i] = (char *) malloc(sizeof(char) * 10);
+                if (stuInputs[i] == NULL || stuNames[i] == NULL || stuIDs[i] == NULL) {
+                    puts("Memory allocation failure!");
                     getchar();
                     return 1;
-                }else{
-                    
+                } else {
+                    gets(stuInputs[i]);
                 }
             }
         }
